@@ -11,7 +11,6 @@ jobs:
     - name: Checkout repository
       uses: actions/checkout@v4
 
-    # 🔥 FORCE PYTHON VERSION (THIS FIXES THE ERROR)
     - name: Set up Python 3.10
       uses: actions/setup-python@v5
       with:
@@ -44,7 +43,6 @@ jobs:
         pip install buildozer cython==0.29.36
         pip install -r requirements.txt
 
-    # 🚀 RUN BUILDOZER DIRECTLY (NO ACTION BUG)
     - name: Build APK
       run: |
         buildozer android debug
