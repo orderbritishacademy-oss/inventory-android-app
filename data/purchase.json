@@ -1,0 +1,17 @@
+[
+  {
+    "id": 1,
+    "invoice": "P2512161",
+    "date": "2025-12-16 11:21",
+    "party": "RAHUL KUMAR\t\t",
+    "products": [
+      {
+        "product": "MONITOR",
+        "qty": 20.0,
+        "rate": 4500.0,
+        "total": 90000.0
+      }
+    ],
+    "total": 90000.0
+  }
+]

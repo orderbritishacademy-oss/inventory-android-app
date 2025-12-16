@@ -1,0 +1,153 @@
+#:set PRIMARY "#0A4661"
+#:set BG "#E8EAF6"
+
+ScreenManager:
+    Dashboard:
+    Purchase:
+    Sale:
+    Stock:
+    Ledger:
+
+<BgScreen>:
+    canvas.before:
+        Color:
+            rgba: 0.91, 0.93, 0.97, 1
+        Rectangle:
+            pos: self.pos
+            size: self.size
+
+<Dashboard>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: "20dp"
+        spacing: "10dp"
+
+        Label:
+            text: "Simple Inventory & Accounting"
+            font_size: "22sp"
+            bold: True
+
+        Button:
+            text: "Purchase"
+            on_release: app.root.current = "purchase"
+
+        Button:
+            text: "Sale"
+            on_release: app.root.current = "sale"
+
+        Button:
+            text: "Stock"
+            on_release: app.root.current = "stock"
+
+        Button:
+            text: "Ledger"
+            on_release: app.root.current = "ledger"
+
+<Purchase>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: "10dp"
+        spacing: "8dp"
+
+        TextInput:
+            id: party
+            hint_text: "Supplier Name"
+
+        TextInput:
+            id: product
+            hint_text: "Product Name"
+
+        TextInput:
+            id: qty
+            hint_text: "Quantity"
+            input_filter: "float"
+
+        TextInput:
+            id: rate
+            hint_text: "Rate"
+            input_filter: "float"
+
+        Button:
+            text: "Save Purchase"
+            on_release: root.save_purchase()
+
+        TextInput:
+            hint_text: "Search purchase"
+            on_text: root.search(self.text)
+
+        ScrollView:
+            GridLayout:
+                id: list
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+
+        Button:
+            text: "Delete Selected"
+            on_release: root.delete_selected()
+
+        Button:
+            text: "Back"
+            on_release: app.root.current = "dashboard"
+
+<Sale>:
+    BoxLayout:
+        orientation: "vertical"
+        padding: "10dp"
+        spacing: "8dp"
+
+        TextInput:
+            id: party
+            hint_text: "Customer Name"
+
+        TextInput:
+            id: product
+            hint_text: "Product Name"
+
+        TextInput:
+            id: qty
+            hint_text: "Quantity"
+            input_filter: "float"
+
+        TextInput:
+            id: rate
+            hint_text: "Rate"
+            input_filter: "float"
+
+        Button:
+            text: "Save Sale"
+            on_release: root.save_sale()
+
+        Button:
+            text: "Back"
+            on_release: app.root.current = "dashboard"
+
+<Stock>:
+    BoxLayout:
+        orientation: "vertical"
+
+        ScrollView:
+            GridLayout:
+                id: stock_list
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+
+        Button:
+            text: "Back"
+            on_release: app.root.current = "dashboard"
+
+<Ledger>:
+    BoxLayout:
+        orientation: "vertical"
+
+        ScrollView:
+            GridLayout:
+                id: ledger_list
+                cols: 1
+                size_hint_y: None
+                height: self.minimum_height
+
+        Button:
+            text: "Back"
+            on_release: app.root.current = "dashboard"
